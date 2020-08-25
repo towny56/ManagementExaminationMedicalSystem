@@ -1,0 +1,21 @@
+<div class="container" xmlns:th="http://www.thymeleaf.org">
+    <div class="row">
+        <div class="col-lg-8">
+
+            <!-- RENDER POSTS -->
+            <th:block th:each="post : ${viewModel}">
+                <th:block th:include="~{fragments/posts/all/single-post}"/>
+            </th:block>
+
+            <!-- PAGINATION -->
+            <div th:if="${viewModel.getTotalElements()} > 0">
+                <th:block th:include="~{fragments/posts/all/pagination}"/>
+            </div>
+
+            <!-- MESSAGE FOR MISSING POSTS-->
+            <th:block th:include="~{fragments/posts/all/message}"/>
+
+        </div>
+        <th:block th:include="~{fragments/sidebar}"/>
+    </div>
+</div>

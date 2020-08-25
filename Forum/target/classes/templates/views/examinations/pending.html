@@ -1,0 +1,36 @@
+<div class="container" xmlns:th="http://www.thymeleaf.org">
+    <div class="row">
+        <div class="col-lg-8">
+
+            <!-- RENDER EXAMINATIONS -->
+            <th:block th:each="examination : ${viewModel}">
+                <th:block th:include="~{fragments/examinations/all/single-examination}"/>
+
+                <!-- CHANGE EXAMINATION MODAL -->
+                <!--<th:block th:include="~{fragments/examinations/by-id/pending-modal}"/>-->
+
+                <th:block th:if="${examination.ward.wardName} == #{result.blood}">
+                    <th:block th:include="~{fragments/results/by-id/blood-modal}"/>
+                </th:block>
+                <th:block th:if="${examination.ward.wardName} == #{result.irm}">
+                    <th:block th:include="~{fragments/results/by-id/irm-modal}"/>
+                </th:block>
+
+                <th:block th:if="${examination.ward.wardName} != #{result.blood} AND ${examination.ward.wardName} != #{result.irm}">
+                    <th:block th:include="~{fragments/results/by-id/not-existing-result-modal}"/>
+                </th:block>
+
+            </th:block>
+
+            <!-- PAGINATION -->
+            <div th:if="${viewModel.getTotalElements()} > 0">
+                <th:block th:include="~{fragments/examinations/all/pending-pagination}"/>
+            </div>
+
+            <!-- MESSAGE FOR MISSING EXAMINATIONS-->
+            <th:block th:include="~{fragments/examinations/all/message}"/>
+
+        </div>
+        <th:block th:include="~{fragments/sidebar-status}"/>
+    </div>
+</div>

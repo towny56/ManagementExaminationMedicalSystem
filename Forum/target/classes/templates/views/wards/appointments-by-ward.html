@@ -1,0 +1,32 @@
+<div xmlns:th="http://www.w3.org/1999/xhtml" class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-8" th:object="${viewModel}">
+            <h4 th:text="|Appointments in Ward ${viewModel.wardName}:|"></h4>
+            <hr>
+
+            <th:block th:if="*{#sets.isEmpty(appointments)}">
+                <div class="bg-white mb-3 p-3 row">
+                    <p>NO APPOINTMENT YET - MAKE CALENDAR TO VISUALISE AND CHOOSE APPOINTMENTS</p>
+                </div>
+            </th:block>
+
+            <th:block th:unless="*{#sets.isEmpty(appointments)}">
+                <th:block th:each="appointment : *{appointments}">
+                    <div class="bg-white mb-3 p-3 row">
+                        <p th:text="${appointment.date}"></p>
+                        <p th:text="${appointment.time}"></p>
+                    </div>
+                </th:block>
+            </th:block>
+
+            <div class="bg-white mb-3 p-3 row">
+                <button data-toggle="modal" data-target="#makeAppointmentModal" class="btn m-1 text-white bg-primary text-center"> Make Appointment </button>
+            </div>
+        </div>
+        <th:block th:include="~{fragments/sidebar-wards}"/>
+    </div>
+
+    <!-- MAKE APPOINTMENT MODAL -->
+    <th:block th:include="~{fragments/wards/book-appointment-modal}"/>
+
+</div>

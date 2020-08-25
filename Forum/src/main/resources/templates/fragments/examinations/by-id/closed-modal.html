@@ -1,0 +1,29 @@
+<div th:id="${examination.id}" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">View result</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>The result of this examination is added.</p>
+            </div>
+
+            <!--
+            TODO:
+            PROBABLY POST MAPPING WILL NOT BE NEEDED BECAUSE ONCE THE EXAMINATION IS DONE AND THE RESULT IS WRITTEN IT CAN NOT BE CHANGED
+            THINK OF IMPLEMENTATION TO GO DIRECTLY TO THE RESULT
+             -->
+            <div class="modal-footer">
+                <!--
+                <form method="get" th:action="@{/results/{result}(result=${examination.id})}">
+                    <button type="submit" class="btn btn-danger">Result</button>
+                </form>
+                -->
+                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,3 @@
+<div class="nav-link text-white d-inline-block"
+   th:text="|Doctor: ${#authentication.getPrincipal().getUsername()}|"></div>
+<a class="nav-link text-white d-inline-block" th:href="@{/logout}" th:text="#{nav.logout}"></a>

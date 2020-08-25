@@ -1,0 +1,15 @@
+<div class="container mb-4">
+    <h1 th:text="#{statistic}"></h1>
+    <hr class="hr-2 bg-info">
+
+    <div class="bg-white rounded mb-3 p-3 row">
+        <div class="row w-100">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+                <h5 class="mt-0" th:text="'Users: ' + ${viewModel.counterUsers}"></h5>
+                <h5 class="mt-0" th:text="'All results: ' + ${viewModel.counterResults}"></h5>
+                <h5 class="mt-0" th:text="'Blood results: ' + ${viewModel.counterBloodResults}"></h5>
+                <h5 class="mt-0" th:text="'Irm results: ' + ${viewModel.counterIrmResults}"></h5>
+            </div>
+        </div>
+    </div>
+</div>

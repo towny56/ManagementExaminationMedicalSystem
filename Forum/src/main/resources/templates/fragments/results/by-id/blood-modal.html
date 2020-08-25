@@ -1,0 +1,57 @@
+<div th:id="${examination.id}" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Change status</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="post" th:action="@{/results/blood}" th:object="${resultBloodBindingModel}">
+                <div class="modal-body">
+                    <p>Enter result for this examination:</p>
+
+                    <label for="description" th:text="#{result.description}"></label>
+                    <input type="text" class="form-control" id="description" name="description" required/>
+
+                    <label for="wbc" th:text="#{result.blood.wbc}"></label>
+                    <input type="text" class="form-control" id="wbc" name="wbc" required/>
+
+                    <label for="rbc" th:text="#{result.blood.rbc}"></label>
+                    <input type="text" class="form-control" id="rbc" name="rbc" required/>
+
+                    <label for="hb" th:text="#{result.blood.hb}"></label>
+                    <input type="text" class="form-control" id="hb" name="hb" required/>
+
+                    <label for="hct" th:text="#{result.blood.hct}"></label>
+                    <input type="text" class="form-control" id="hct" name="hct" required/>
+
+                    <label for="mcv" th:text="#{result.blood.mcv}"></label>
+                    <input type="text" class="form-control" id="mcv" name="mcv" required/>
+
+                    <label for="plt" th:text="#{result.blood.plt}"></label>
+                    <input type="text" class="form-control" id="plt" name="plt" required/>
+
+                    <label for="sue" th:text="#{result.blood.sue}"></label>
+                    <input type="text" class="form-control" id="sue" name="sue" required/>
+
+                    <label for="ast" th:text="#{result.blood.ast}"></label>
+                    <input type="text" class="form-control" id="ast" name="ast" required/>
+
+                    <label for="alt" th:text="#{result.blood.alt}"></label>
+                    <input type="text" class="form-control" id="alt" name="alt" required/>
+
+                    <input type="hidden" name="date" th:value="${examination.date}"/>
+                    <input type="hidden" name="time" th:value="${examination.time}"/>
+                    <input type="hidden" name="patient" th:value="${examination.patient.username}"/>
+                    <input type="hidden" name="ward" th:value="${examination.ward.wardName}"/>
+                    <input type="hidden" name="examination" th:value="${examination.id}"/>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-outline-danger">Finish</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

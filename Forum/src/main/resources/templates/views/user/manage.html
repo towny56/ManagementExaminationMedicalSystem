@@ -1,0 +1,89 @@
+<div class="container p-3 bg-white" xmlns:th="http://www.thymeleaf.org">
+    <h6 class="mb-1">Search By Username:</h6>
+    <div class="logs-header row">
+        <form class="form-inline row col-lg-6" th:method="post" th:action="@{/manage/search}">
+            <div class="mb-2 form-group col-lg-6">
+                <input type="text" class="form-control col-xs-12 col-sm-6 col-md-6" name="username" placeholder="Username...">
+            </div>
+            <div class="mb-2 form-group col-lg-6">
+                <button type="submit" class="btn btn-info col-xs-12 col-sm-6 col-md-6">Search User</button>
+            </div>
+        </form>
+    </div>
+    <table class="table" style="text-align: center">
+        <thead>
+        <tr>
+            <th scope="col">Username</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Egn</th>
+            <th scope="col">Role</th>
+            <th scope="col">Ward</th>
+            <th scope="col">Account status</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <th:block th:each="user : ${viewModel}" th:object="${user}">
+            <tr>
+                <td>
+                    <div class="col-sm-6 col-md-6 col-lg-10 avatar">
+                        <a class="pull-right" th:href="|/users/*{username}|">
+                            <i class="fas fa-user-alt" style="color:black"></i>
+                            <!--
+                            <img src="/img/avatar__181424 (2).png" heght="512" width="512" class="d-inline-block"/>
+                            -->
+                            </br>
+                            <h6 th:text="*{username}" class="text-dark d-inline-block"></h6>
+                        </a>
+                    </div>
+                </td>
+
+                <td th:text="*{firstName}"></td>
+                <td th:text="*{lastName}"></td>
+                <td th:text="*{email}">
+                <td th:text="*{egn}"></td>
+                <td th:text="*{role}"></td>
+                <td th:text="*{ward}"></td>
+
+                <th:block th:if="*{accountNonLocked}">
+                    <td th:text="unlocked"></td>
+                </th:block>
+                <th:block th:unless="*{accountNonLocked}">
+                    <td th:text="locked"></td>
+                </th:block>
+
+                <td>
+                    <div class="row justify-content-center">
+                        <form method="post" th:action="@{/lock/{username}(username=*{username})}">
+                            <th:block th:if="*{accountNonLocked}">
+                                <button class="btn m-1 btn-outline-danger header-button" type="submit">
+                                    <i class="fas fa-user-lock" style="color:black"></i>
+                                </button>
+                            </th:block>
+                            <th:block th:unless="*{accountNonLocked}">
+                                <button class="btn m-1 btn-secondary header-button" type="submit" disabled>
+                                    <i class="fas fa-user-lock" style="color:black"></i>
+                                </button>
+                            </th:block>
+                        </form>
+                        <form method="post" th:action="@{/unlock/{username}(username=*{username})}">
+                            <th:block th:if="*{accountNonLocked}">
+                                <button class="btn m-1 btn-secondary header-button" type="submit" disabled>
+                                    <i class="fas fa-user-check" style="color:black"></i>
+                                </button>
+                            </th:block>
+                            <th:block th:unless="*{accountNonLocked}">
+                                <button class="btn m-1 btn-outline-success header-button" type="submit">
+                                    <i class="fas fa-user-check" style="color:black"></i>
+                                </button>
+                            </th:block>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+        </th:block>
+        </tbody>
+    </table>
+</div>

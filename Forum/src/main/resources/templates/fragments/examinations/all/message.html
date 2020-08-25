@@ -1,0 +1,9 @@
+<div th:if="${param.search != null} and !(${viewModel.getTotalElements()} > 0)">
+    <h4 class="p-2" style="color: darkred">There are no examinations matching your criteria: "<b><span
+            th:text="${param.search}"></span></b>"</h4>
+    <hr class="bg-info hr-2">
+</div>
+<div th:if="${param.search == null} and !(${viewModel.getTotalElements()} > 0)">
+    <h4 class="p-2" style="color: darkred">There are no examinations.</h4>
+    <hr class="bg-info hr-2">
+</div>

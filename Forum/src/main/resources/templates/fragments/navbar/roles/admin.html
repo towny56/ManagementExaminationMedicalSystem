@@ -1,0 +1,11 @@
+<li class="nav-link text-white d-inline-block dropdown">
+    <a class="nav-link text-white d-inline-block dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" th:text="#{admin.create.user}">
+    </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" th:href="@{/users/createpatient}" th:text="#{patient}">Patient</a>
+        <a class="dropdown-item" th:href="@{/users/createdoctor}" th:text="#{doctor}">Doctor</a>
+        <a class="dropdown-item" th:href="@{/users/createadmin}" th:text="#{admin}">Admin</a>
+    </div>
+</li>
+<div class="nav-link text-white d-inline-block" th:text="|Admin: ${#authentication.getPrincipal().getUsername()}|"></div>
+<a class="nav-link text-white d-inline-block" th:href="@{/logout}" th:text="#{nav.logout}"></a>

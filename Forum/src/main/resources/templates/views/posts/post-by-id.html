@@ -1,0 +1,39 @@
+<div class="container" xmlns:th="http://www.thymeleaf.org">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-8" th:object="${viewModel}">
+
+            <!-- POST -->
+            <th:block th:include="~{fragments/posts/by-id/post}"/>
+
+            <hr>
+
+            <!-- COMMENTS MISSING MESSAGE -->
+            <th:block th:if="*{#sets.isEmpty(comments)}">
+                <th:block th:include="~{fragments/posts/by-id/missing-comments-message}"/>
+            </th:block>
+
+            <th:block th:unless="*{#sets.isEmpty(comments)}">
+                <th:block th:each="comment : *{comments}">
+                    <th:block th:include="~{fragments/posts/by-id/comment}"/>
+                </th:block>
+            </th:block>
+
+            <!-- COMMENT FORM -->
+            <div sec:authorize="${isAuthenticated()}">
+                <th:block th:include="~{fragments/posts/by-id/comment-form}"/>
+            </div>
+
+        </div>
+
+        <!-- SIDEBAR -->
+        <th:block th:include="~{fragments/sidebar}"/>
+
+    </div>
+
+    <!-- EDIT MODAL -->
+    <th:block th:include="~{fragments/posts/by-id/edit-modal}"/>
+
+    <!-- DELETE MODAL -->
+    <th:block th:include="~{fragments/posts/by-id/delete-modal}"/>
+
+</div>

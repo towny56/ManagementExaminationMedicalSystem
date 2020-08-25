@@ -1,0 +1,21 @@
+<div class="container mb-4">
+    <h1 th:text="#{wards}"></h1>
+    <hr class="hr-2 bg-info">
+
+    <div th:if="${#sets.size(viewModel) > 0}">
+        <th:block th:each="ward : ${viewModel}">
+            <div class="list-group">
+                <a th:href="@{/wards/{name}(name=${ward.wardName})}" class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 th:text="${ward.wardName}" class="mb-1"></h5>
+                    </div>
+                    <p th:text="${ward.roomNumber}" class="mb-1"></p>
+                    <small class="text-muted" th:text="#{ward.make.appointment}"></small>
+                </a>
+            </div>
+        </th:block>
+    </div>
+    <div th:unless="${#sets.size(viewModel) > 0}">
+        <h4 class="text-secondary" th:text="#{ward.no.existing}"></h4>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+<div class="container mb-4">
+    <h1 th:text="#{status}"></h1>
+    <hr class="hr-2 bg-info">
+
+    <div class="list-group">
+        <a th:href="@{/examinations/{status}(status=#{open})}" class="list-group-item list-group-item-action flex-column align-items-start">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 th:text="#{open}" class="mb-1"></h5>
+            </div>
+            <small class="text-muted">View examinations in this status.</small>
+        </a>
+    </div>
+    <div class="list-group">
+        <a th:href="@{/examinations/{status}(status=#{processed})}" class="list-group-item list-group-item-action flex-column align-items-start">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 th:text="#{processed}" class="mb-1"></h5>
+            </div>
+            <small class="text-muted">View examinations in this status.</small>
+        </a>
+    </div>
+    <div class="list-group">
+        <a th:href="@{/examinations/{status}(status=#{pending})}" class="list-group-item list-group-item-action flex-column align-items-start">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 th:text="#{pending}" class="mb-1"></h5>
+            </div>
+            <small class="text-muted">View examinations in this status.</small>
+        </a>
+    </div>
+    <div class="list-group">
+        <a th:href="@{/examinations/{status}(status=#{closed})}" class="list-group-item list-group-item-action flex-column align-items-start">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 th:text="#{closed}" class="mb-1"></h5>
+            </div>
+            <small class="text-muted">View examinations in this status.</small>
+        </a>
+    </div>
+</div>

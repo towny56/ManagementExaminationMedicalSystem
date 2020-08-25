@@ -1,0 +1,25 @@
+<div class="bg-white rounded mb-3 p-3 row">
+    <div class="col-12">
+        <div class="d-flex justify-content-between">
+            <h4 class="mt-0" th:text="${appointment.ward.wardName}"></h4>
+            <h4 class="mt-0" th:text="${appointment.date}"></h4>
+            <h4 class="mt-0" th:text="${appointment.time}"></h4>
+        </div>
+        <hr class="bg-info w-100">
+    </div>
+    <div class="row w-100">
+        <div class="col-sm-6 col-md-6 col-lg-6">
+            <!--
+            <i class="p-1 rounded bg-primary text-white" th:text="${appointment.patient.egn}"></i>
+            -->
+        </div>
+        <div class="col-sm-6 col-md-6 col-lg-6 avatar">
+            <a class="pull-right" th:href="|/users/${appointment.patient.username}|">
+                <h6 th:text="|${appointment.patient.firstName} ${appointment.patient.lastName}|" class="text-dark d-inline-block"></h6>
+                <i class="fas fa-user-alt" style="color:black"></i>
+                </br>
+                <i class="p-1 rounded bg-warning text-white" th:text="${appointment.patient.egn}"></i>
+            </a>
+        </div>
+    </div>
+</div>

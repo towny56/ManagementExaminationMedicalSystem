@@ -1,0 +1,129 @@
+body {
+    background-color: #E4E2DD!important;
+    overflow-x: hidden;
+    font-family: Georgia;
+    word-wrap: break-word;
+}
+
+.hr-2 {
+    height: 2px;
+}
+
+.w-40 {
+    width: 40%!important;
+}
+
+.container {
+    min-height: 400px;
+    margin-bottom: 30px;
+    border-radius: 15px;
+    margin-top: 20px;
+}
+
+.header-nav {
+    /*
+    background-image: url("../img/background.jpg");
+    */
+
+    min-height: 150px;
+    border-bottom: 1px solid #FFFFFF;
+
+    background-color: #a3a8aa;
+}
+
+.avatar img {
+    height: 30px;
+    width: 30px;
+}
+
+.sidebarblock {
+    background-color: #ffffff;
+    border-radius: 2px;
+    box-shadow: 0 1px 2px #c9cccd;
+    margin-bottom: 20px;
+}
+
+.sidebarblock h3 {
+    color: #363838;
+    font-size: 14px;
+    font-family: Georgia;
+    margin: 0;
+    padding: 20px;
+}
+
+.sidebarblock .divline {
+    height: 1px;
+    line-height: 1px;
+    border-bottom: solid 1px #f1f1f1;
+}
+
+ul.cats li a {
+    font-size: 14px;
+    color: #363838;
+    font-family: Georgia;
+    line-height: 30px;
+}
+
+ul.cats .badge {
+    background-color: #bdc3c7;
+    font-size: 12px;
+    color: #ffffff;
+    font-family: Georgia;
+    margin-top: 7px;
+}
+
+.textwraper textarea {
+    border: none;
+    box-shadow: none;
+    background-color: #f1f1f1;
+    width: 100%;
+}
+
+.textwraper {
+    background-color: #f1f1f1;
+    border-radius: 2px;
+    padding:18px;
+    margin: 20px 5px 0px 0;
+}
+
+textarea.form-control {
+    height: 100%;
+}
+
+.page-not-found {
+    display: block;
+    margin: auto;
+    width: 800px;
+    border-radius: 40px;
+}
+
+.fa {
+    font-size: 30px;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+/*Refactor*/
+.authentication {
+    width: 40%!important;
+}
+
+@media only screen and (max-width: 950px) {
+    .authentication {
+        width: 100%!important;
+    }
+}
+
+.home-page {
+    min-height: 900px;
+    height: 100%;
+    background-image: url("../img/wallpaper2.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.home-page  {
+    text-shadow: 2px 2px 2px grey, 2px 2px 2px grey, 2px 2px 2px grey, 2px 2px 2px grey;
+}

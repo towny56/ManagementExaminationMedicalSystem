@@ -1,0 +1,16 @@
+<div class="container view bg-white create-content" xmlns:th="http://www.w3.org/1999/xhtml">
+    <h1>Create New Ward</h1>
+    <form class="p-4" th:method="post" th:action="@{/wards/create}" th:object="${wardBindingModel}">
+        <div class="form-group" th:classappend="${#fields.hasErrors('wardName')} ? 'has-error'">
+            <label for="exampleFormControlInput1">Ward Name</label>
+            <input type="text" class="form-control" name="wardName" id="exampleFormControlInput1" placeholder="Name" th:field="*{wardName}">
+            <div class="text-danger" th:each="error : ${#fields.errors('wardName')}" th:text="${error}">Error Message</div>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput2">Ward Room</label>
+            <input type="text" class="form-control" name="roomNumber" id="exampleFormControlInput2" placeholder="Number" th:field="*{roomNumber}">
+            <div class="text-danger" th:each="error : ${#fields.errors('roomNumber')}" th:text="${error}">Error Message</div>
+        </div>
+        <button type="submit" class="btn bg-blue btn-info ">Create</button>
+    </form>
+</div>

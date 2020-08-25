@@ -1,0 +1,98 @@
+<div class="container-fluid m-0 p-0" xmlns:th="http://www.thymeleaf.org">
+    <nav class="navbar navbar-dark bg-dark navbar-expand-lg fixed-top">
+        <a class="navbar-brand text-white" th:href="@{/}">MEMS</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+
+            <a th:href="@{/}">
+                <i class="fas fa-home" style="color:white"></i>
+            </a>
+
+            <ul class="nav navbar-nav mr-auto">
+
+                <th:block sec:authorize="!isAnonymous() and hasAuthority('ADMIN')">
+                    <li class="nav-item d-inline-block dropdown text-white">
+                        <a class="nav-link text-white d-inline-block dropdown-toggle" th:text="#{action}" href="#" id="navbarDropdownAction" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white"></a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownAction">
+                            <a class="dropdown-item" th:href="@{/wards/create}" th:text="#{admin.create.ward}"></a>
+                            <a class="dropdown-item" th:href="@{/manage}" th:text="#{admin.manage.users}"></a>
+                            <a class="dropdown-item" th:href="@{/problems}" th:text="#{problem.all}"></a>
+                            <a class="dropdown-item" th:href="@{/statistics}" th:text="#{statistic.all}"></a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" th:href="@{/logs/all}" th:text="#{logs}"></a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item d-inline-block dropdown text-white">
+                        <a class="nav-link text-white d-inline-block dropdown-toggle" th:text="#{appointments}" href="#" id="navbarDropdownAppointments" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white"></a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownAppointments">
+                            <a class="dropdown-item" th:href="@{/wards}" th:text="#{appointments.make}"></a>
+                            <a class="dropdown-item" th:href="@{/appointments}" th:text="#{appointments.all}"></a>
+                        </div>
+                    </li>
+
+                </th:block>
+
+                <th:block sec:authorize="!isAnonymous() and hasAuthority('DOCTOR')">
+                    <li class="nav-item text-white">
+                        <a class="nav-link text-white" th:href="@{/appointments}" th:text="#{appointments}"></a>
+                    </li>
+                </th:block>
+
+                <th:block sec:authorize="!isAnonymous() and hasAuthority('PATIENT')">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" th:href="@{/contact}" th:text="#{contact}"></a>
+                    </li>
+                    <li class="nav-item dropdown text-white">
+                        <a class="nav-link dropdown-toggle" th:text="#{appointments}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white"></a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" th:href="@{/wards}" th:text="#{appointments.make}"></a>
+                            <a class="dropdown-item" th:href="@{/appointments}" th:text="#{appointments.all}"></a>
+                        </div>
+                    </li>
+                </th:block>
+
+                <th:block sec:authorize="!isAnonymous()">
+                    <li class="nav-item text-white">
+                        <a class="nav-link text-white" th:href="@{/examinations}" th:text="#{examinations}"></a>
+                    </li>
+
+                    <li class="nav-item text-white">
+                        <a class="nav-link text-white" th:href="@{/results}" th:text="#{results}"></a>
+                    </li>
+                </th:block>
+            </ul>
+
+            <div>
+                <a th:href="@{/about}">
+                    <i class="fas fa-info-circle" style="color: white; padding-right: 10px;"></i>
+                </a>
+            </div>
+
+            <div>
+                <select class="form-control" id="languageSelect">
+                    <option value="" th:text="#{lang}"></option>
+                    <option value="en" th:text="#{change.lang.en}"></option>
+                    <option value="de" th:text="#{change.lang.de}"></option>
+                    <option value="fr" th:text="#{change.lang.fr}"></option>
+                </select>
+            </div>
+
+            <div sec:authorize="isAnonymous()">
+                <th:block th:include="~{fragments/navbar/roles/guest}"/>
+            </div>
+            <div sec:authorize="hasAuthority('PATIENT') and !hasAuthority('ADMIN')">
+                <th:block th:include="~{fragments/navbar/roles/patient}"/>
+            </div>
+            <div sec:authorize="hasAuthority('DOCTOR') and !hasAuthority('ADMIN')">
+                <th:block th:include="~{fragments/navbar/roles/doctor}"/>
+            </div>
+            <div sec:authorize="hasAuthority('ADMIN')">
+                <th:block th:include="~{fragments/navbar/roles/admin}"/>
+            </div>
+        </div>
+    </nav>
+</div>

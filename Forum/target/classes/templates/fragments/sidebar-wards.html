@@ -1,0 +1,19 @@
+<div class="col-sm-12 col-md-12 col-lg-4">
+    <div class="p-2 bg-white rounded">
+        <h3 th:text="#{wards}"></h3>
+        <div th:if="${#sets.size(wardNames) > 0}">
+            <div class="divline"></div>
+            <div class="p-2">
+                <ul class="cats p-0 m-0 list-unstyled">
+                    <th:block th:each="wardName : ${wardNames}">
+                        <a th:text="${wardName}" th:href="@{/wards/{name}(name=${wardName})}"
+                           class="list-group-item list-group-item-action"></a>
+                    </th:block>
+                </ul>
+            </div>
+        </div>
+        <div th:unless="${#sets.size(wardNames) > 0}">
+            <p class="text-secondary p-3">There are no wards yet. </p>
+        </div>
+    </div>
+</div>
